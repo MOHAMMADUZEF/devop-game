@@ -16,4 +16,4 @@ jobs:
         run: echo "game deployed"
 
       - name: Run
-        run: echo"running"
+        run: echo "running"
