@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click the Button Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      margin-top: 100px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #click-button {
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #click-button:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+
+    .info {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>MOHAMMADUZEF</h1>
+
+  <div class="info">
+    Time left: <span id="time">10</span> seconds
+  </div>
+
+  <button id="click-button" onclick="handleClick()">Click Me!</button>
+
+  <div class="info">
+    Your Score: <span id="score">0</span>
+  </div>
+
+  <script>
+    let timeLeft = 10;
+    let score = 0;
+    let gameStarted = false;
+    let countdown;
+
+    function handleClick() {
+      if (!gameStarted) {
+        gameStarted = true;
+        countdown = setInterval(updateTimer, 1000);
+      }
+
+      if (timeLeft > 0) {
+        score++;
+        document.getElementById('score').textContent = score;
+      }
+    }
+
+    function updateTimer() {
+      timeLeft--;
+      document.getElementById('time').textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        document.getElementById('click-button').disabled = true;
+        alert("Time's up! Your final score is: " + score);
+      }
+    }
+  </script>
+
+</body>
+</html>
